@@ -12,6 +12,10 @@ friends scores and how you rank against them.
 
 The app is built with coffeescript, backbone.js, SASS and django.  Since its no longer being maintained, we've decided to open source it!
 
+Screenshot
+====
+![Vocab Game Screenshot](http://www.derekdahmer.com/images/projects/prepfly-2.png "Vocab Game Screenshot")
+
 Installation Instructions
 ====
 
