@@ -1,3 +1,17 @@
+About This App
+====
+This is a facebook app game for learning SAT vocab.  It presents one
+definition and two
+words together at the same time and the player must quickly choose which
+word fits the definition before the time runs out.  As correct answers
+are given, the time continues to get faster.  Three incorrect answers
+and you're out.
+
+The app requires facebook login to track your scores, and see your
+friends scores and how you rank against them.
+
+The app is built with coffeescript, backbone.js, SASS and django.  Since its no longer being maintained, we've decided to open source it!
+
 Installation Instructions
 ====
 
@@ -76,5 +90,6 @@ Run It!
 Authors
 ---
 [Derek Dahmer](http://derekdahmer.com) - All code
+
 [Evanglos Kramvis](http://www.linkedin.com/in/angelokramvis) - Sample Vocab Content
 
