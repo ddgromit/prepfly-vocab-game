@@ -1,0 +1,18 @@
+$sitebgcolor: #25AFD9;
+
+html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    line-height: 1.5;
+    min-height: 600px;
+}
+body.site {
+    background-color: $sitebgcolor;
+    background-image: url('../images/bg-gradient.png');
+    background-repeat: repeat-x;
+}
+a img {
+    border: none;
+}

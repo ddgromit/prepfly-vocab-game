@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block full_title %}Prepfly SAT{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript" src="{{STATIC_URL}}jslibs/jquery-1.5.2.min.js"></script>
+{% endblock javascript %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/homepage.css" media="screen,projection" />
+<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+    window.GLOBAL = {
+        'fbAppId':window.location.hostname == "www.prepfly.com" ? '153362371361975' : '190616047632448'
+    }
+</script>
+
+{% endblock %}
+
+{% block body %}
+<div class="header">
+    <img class="logo" src="{{STATIC_URL}}images/logo.png" />
+    <div class="login">
+        {% if logged_in %}
+            <a href="/lingo/">Go Play</a>
+        {% else %}
+            <a href="/login/">Login</a>
+        {% endif %}
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div class="main-column">
+    <div class="main-row">
+        <div class="left">
+            <img src="{{STATIC_URL}}images/homepage-game-ss.png" />
+        </div>
+        <div class="right">
+            <div class="headline">
+                Improve Your <span class="highlight">SAT</span> Score with <span
+                    class="highlight">Vocab Games</span>
+            </div>
+            <div class="signup">
+                <a href="/login/">
+                    <img src="{{STATIC_URL}}images/connect-with-facebook.png" />
+                </a>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="border"></div>
+    <div class="value-add-row">
+        <div class="value-add">
+            <img src="{{STATIC_URL}}images/pacman.png" />
+            <div class="text">Play Games</div>
+        </div>
+        <div class="value-add">
+            <img src="{{STATIC_URL}}images/up-arrow.png" />
+            <div class="text">Up Your Skill</div>
+        </div>
+        <div class="value-add">
+            <img src="{{STATIC_URL}}images/friends-1.png" />
+            <div class="text">Beat Your Friends</div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+if (window.FB) {
+    FB.init({
+        appId:GLOBAL.fbAppId, cookie:true,
+        status:true, xfbml:true
+    });
+
+    // Reload the page when a user FB logs in so the middleware can take care of auth
+    FB.Event.subscribe('auth.statusChange',function(response) {
+        if (response.status == 'connected') {
+            window.location.reload();
+        }
+    });
+}
+
+</script>
+{% endblock %}

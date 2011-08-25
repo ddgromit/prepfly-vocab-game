@@ -1,0 +1,93 @@
+.header {
+  width: 682px;
+  margin: 0 auto; }
+  .header .logo-subtitle {
+    float: left; }
+  .header .connect-with-facebook {
+    float: right;
+    margin-top: 25px;
+    cursor: pointer; }
+  .header .level-area {
+    float: right;
+    width: 230px;
+    margin-top: 10px; }
+    .header .level-area .text {
+      font-family: Arial;
+      font-size: 18px; }
+      .header .level-area .text .level {
+        float: left; }
+      .header .level-area .text .xp {
+        float: right; }
+    .header .level-area .progress {
+      width: 230px;
+      background-color: #c3c3c3;
+      border-radius: 4px;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      margin-top: 10px; }
+      .header .level-area .progress .progress-inner {
+        background: url(/static/images/facebook/home-xp-bg.png);
+        height: 26px;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px; }
+
+.main-area {
+  margin: 20px auto 0 auto;
+  width: 682px; }
+  .main-area .tabs .tab {
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    background: url(/static/images/facebook/home-tabs-bg.png);
+    text-align: center;
+    padding: 5px 28px;
+    height: 24px;
+    float: left; }
+    .main-area .tabs .tab a {
+      color: black;
+      text-shadow: #dabb90 0 1px 0;
+      text-decoration: none; }
+  .main-area .tabs .tab-left {
+    border-radius: 4px 0 0 0;
+    -moz-border-radius: 4px 0 0 0;
+    -webkit-border-radius: 4px 0 0 0; }
+  .main-area .tabs .tab-right {
+    border-radius: 0 4px 0 0;
+    -moz-border-radius: 0 4px 0 0;
+    -webkit-border-radius: 0 4px 0 0; }
+  .main-area .tabs .tab-left.tab-right {
+    border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0; }
+  .main-area .tabs .title {
+    font-family: Arial;
+    font-size: 25px;
+    font-weight: bold; }
+  .main-area .games {
+    background: url(/static/images/facebook/home-clouds.png) no-repeat;
+    height: 244px; }
+    .main-area .games .game {
+      background-color: rgba(255, 255, 255, 0.75);
+      text-align: center;
+      width: 205px;
+      border-radius: 8px;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      padding: 10px 0;
+      float: left;
+      margin-left: 35px;
+      margin-top: 23px;
+      height: 178px; }
+      .main-area .games .game .title {
+        font-size: 25px;
+        font-family: Arial;
+        font-weight: bold; }
+    .main-area .games .game-no-message {
+      cursor: pointer; }
+    .main-area .games .game-no-message:hover {
+      background-color: rgba(255, 255, 255, 0.9); }
+    .main-area .games .game-message .title {
+      margin-top: 50px;
+      color: #444;
+      cursor: inherit; }

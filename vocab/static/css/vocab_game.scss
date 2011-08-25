@@ -1,0 +1,317 @@
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+@mixin softbutton {
+    background-color: #dfdfdf;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#dfdfdf));
+    background: -moz-linear-gradient(#f9f9f9, #dfdfdf );
+    border: 1px solid #adadad;
+    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 14px;
+    text-shadow: 0 1px 1px #FFF;
+}
+@mixin softbuttonhover {
+    background-color: #f9f9f9;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dfdfdf), to(#f9f9f9));
+    background: -moz-linear-gradient(#dfdfdf, #f9f9f9);
+}
+@mixin shadow($color: #333333, $distance: 0px, $spread:2px) {
+  -moz-box-shadow: 0px 1px 2px $color;
+  -webkit-box-shadow: $distance $distance $spread $color;
+  box-shadow: 0px 1px 2px $color;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=90, Color='$color')";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=90, Color='$color');
+}
+
+@mixin pane {
+    @include border-radius(4px);
+    padding: 8px 20px;
+    background-color: white;
+}
+
+$scorebarcolor: #0D96BF;
+$ranktextcolor: #FFBA3B;
+$skillbarbackground: #1E90CC;
+$skillbarforeground: #f9aa0b;
+
+body {
+    font-family: Helvetica, Arial, sans;
+}
+.center-column {
+    width: 800px;
+    margin: 40px auto 0 auto;
+}
+
+.game-column {
+    @include pane;
+    width: 600px;
+    float: left;
+    min-height: 370px;
+
+    font-family: Helvetica, Arial, sans;
+
+    .question {
+        text-align: center;
+        width: 400px;
+        margin: 50px auto 10px auto;
+        font-size: 36px;
+    }
+    .choices {
+        margin: 0 auto;
+
+        .choice {
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+
+            width: 250px;
+            float: left;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        div.choice:active {
+            border: 1px solid #000;
+        }
+        .choice-left {
+            margin-right: 10px;
+            text-align: right;
+        }
+        .choice:hover {
+            border: 1px solid #666;
+        }
+
+        .choice.selected.correct {
+            border: 1px solid green;
+        }
+        .choice.selected.incorrect {
+            border: 1px solid red;
+        }
+
+    }
+    .correction {
+        text-align: center;
+        margin-top: 25px;
+
+        .correction-text {
+            margin-bottom: 15px;
+        }
+        .acknowledged {
+            @include softbutton;
+            padding: 12px 40px;
+        }
+        .acknowledged:hover {
+            @include softbuttonhover;
+        }
+    }
+
+
+}
+.timer-column {
+    @include pane;
+    width: 100px;
+    float: right;
+
+    .score {
+        background-color: #333;
+        color: white;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans;
+        font-size: 30px;
+        text-align: center;
+        padding: 8px 0;
+        width: 102px;
+        @include border-radius(4px);
+    }
+    .timer {
+        background-color: black;
+        padding: 1px;
+        margin-top: 10px;
+        height: 300px;
+        @include border-radius(4px);
+        position: relative;
+        width: 100px;
+
+        .timer-inner {
+            @include border-radius(4px);
+            position: absolute;
+            bottom:0;
+
+            margin: 10px;
+            background-color: red;
+            height: 280px;
+            width: 80px;
+        }
+    }
+    .lives {
+        margin: 2px 0 6px 10px;
+
+        img {
+            float: left;
+            margin-right: 6px;
+        }
+    }
+}
+
+.scores-area {
+    @include pane;
+    width: 600px;
+    font-family: Helvetica, Arial, sans;
+
+    .score-announcement {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    .highscores {
+        .highscore {
+            margin-bottom: 15px;
+            .bar {
+                @include border-radius(4px);
+                text-shadow: #777 1px 1px 0;
+                cursor: pointer;
+                background-color: $scorebarcolor;
+                color: white;
+                font-size: 24px;
+                padding: 10px 10px;
+                font-weight: bold;
+
+                .rank-text {
+                    color: $ranktextcolor;
+                }
+            }
+            .scores {
+                margin-top: 15px;
+                margin-left: 10px;
+                margin-bottom: 20px;
+                .entry {
+                    margin-bottom: 6px;
+                    .left-area {
+                        float: left;
+                        margin-right: 8px;
+                    }
+                    .center-area {
+                        float: left;
+                    }
+                    .right-area {
+                        float: left;
+                        margin-left: 16px;
+                    }
+                    .rank {
+                        font-size: 34px;
+                        font-weight: bold;
+                        color: #fff;
+                        background-color: #333;
+                        text-align: center;
+                        width: 60px;
+                        @include border-radius(3px);
+                    }
+                    .fbpic {
+                        @include border-radius(3px);
+                    }
+                    .name {
+                        font-size: 18px;
+                    }
+                    .score {
+                        float-size: 18px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .scores-finish-button {
+        margin-top: 25px;
+        width: 100%;
+        font-size: 24px;
+        padding: 8px 0;
+    }
+}
+
+.skills-area {
+    @include pane;
+    width: 500px;
+
+    .buttons {
+        margin: 20px 0 40px 0;
+        text-align: center;
+    }
+
+    .again-button,
+    button.again-button:active {
+        @include softbutton;
+        padding: 15px 10px;
+        width: 230px;
+        font-size: 30px;
+        margin-right: 20px;
+    }
+    .again-button:hover {
+        @include softbuttonhover;
+    }
+
+    .back-to-games-button,
+    button.back-to-games-button:active {
+        @include softbutton;
+        padding: 15px 10px;
+        width: 230px;
+        font-size: 30px;
+    }
+    .back-to-games-button:hover {
+        @include softbuttonhover;
+    }
+
+    .skills {
+        width: 570px;
+        margin: 0 auto 30px auto;
+
+        .skill {
+            margin-bottom: 10px;
+
+            .word {
+                font-size: 25px;
+                font-weight: bold;
+                float: left;
+                margin-right: 30px;
+                margin-top: 8px;
+                width: 120px;
+                color: #555;
+            }
+            .skill-bar {
+                float: left;
+                padding: 1px;
+                width: 340px;
+                background-color: $skillbarbackground;
+                @include border-radius(4px);
+
+                .skill-bar-inner {
+                    height: 35px;
+                    margin: 8px 0 8px 8px;
+                    background-color: $skillbarforeground;
+                    @include border-radius(4px);
+                }
+            }
+        }
+    }
+
+
+    .skill-1 .skill-bar-inner {
+        width: 210px;
+    }
+    .skill-2 .skill-bar-inner {
+        width: 150px;
+    }
+    .skill-3 .skill-bar-inner {
+        width: 90px;
+    }
+    .skill-4 .skill-bar-inner {
+        width: 270px;
+    }
+}

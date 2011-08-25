@@ -1,0 +1,25 @@
+DATABASES = {
+    'default': {
+        'ENGINE':'django.db.backends.sqlite3',
+        'NAME':'/Users/Me/temp/dbs/prepfly-vocab-game.db',
+        'USER':'',
+        'PASSWORD':'',
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+
+# Set from your facebook site_url
+THIS_HOST = "http://127.0.0.1:8000"
+
+
+
+FACEBOOK_APPLICATION_ID = ''
+FACEBOOK_APPLICATION_SECRET_KEY = ''
+FACEBOOK_APPLICATION_API_KEY = ''
+
+FACEBOOK_APP_ID          = ''
+FACEBOOK_API_SECRET      = ''
+

@@ -1,0 +1,6 @@
+*.pyc
+settings_local.py
+.sass-cache
+/static
+build/
+.DS_Store

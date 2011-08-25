@@ -1,0 +1,121 @@
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+.header {
+    width: 682px;
+    margin: 0 auto;
+    .logo-subtitle {
+        float: left;
+    }
+    
+    .connect-with-facebook {
+        float: right;
+        margin-top: 25px;
+        cursor: pointer;
+    }
+    .level-area {
+        float: right;
+        width: 230px;
+        margin-top: 10px;
+        .text {
+            font-family: Arial;
+            font-size: 18px;
+
+            .level {
+                float: left;
+            }
+            .xp {
+                float: right;
+            }
+        }
+        .progress {
+            width: 230px;
+            background-color: #c3c3c3;
+            @include border-radius(4px);
+            margin-top: 10px;
+            .progress-inner {
+                background: url(/static/images/facebook/home-xp-bg.png);
+                height: 26px;
+                @include border-radius(4px);
+            }
+        }
+    }
+}
+
+.main-area {
+    margin: 20px auto 0 auto;
+    width: 682px;
+
+    .tabs {
+        .tab {
+            font-family: Arial;
+            font-size: 18px;
+            font-weight: bold;
+            background: url(/static/images/facebook/home-tabs-bg.png);
+            text-align: center;
+            padding: 5px 28px;
+            height: 24px;
+            float: left;
+            a {
+                color: black;
+                text-shadow: #dabb90 0 1px 0;
+                text-decoration: none;
+            }
+        }
+        .tab-left {
+            @include border-radius(4px 0 0 0);
+        }
+        .tab-right {
+            @include border-radius(0 4px 0 0);
+        }
+        .tab-left.tab-right {
+            @include border-radius(4px 4px 0 0);
+        }
+        .title {
+            font-family: Arial;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    }
+
+    .games {
+        background: url(/static/images/facebook/home-clouds.png) no-repeat;
+        height: 244px;
+
+        .game {
+            background-color: rgba(255,255,255,0.75);
+            text-align: center;
+            width: 205px;
+            @include border-radius(8px);
+            padding: 10px 0;
+            float: left;
+            margin-left: 35px;
+            margin-top: 23px;
+            height: 178px;
+
+            .game-icon {
+            }
+            .title {
+                font-size: 25px;
+                font-family: Arial;
+                font-weight: bold;
+            }
+        }
+        .game-no-message {
+            cursor: pointer;
+        }
+        .game-no-message:hover {
+            background-color: rgba(255,255,255,0.9);
+        }
+        .game-message {
+            .title {
+                margin-top: 50px;
+                color: #444;
+                cursor: inherit;
+            }
+        }
+    }
+}

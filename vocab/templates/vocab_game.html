@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block full_title %}Game{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript" src="{{STATIC_URL}}jslibs/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jslibs/underscore.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jslibs/backbone.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jslibs/json2.js"></script>
+<script type="text/javascript">
+    if (typeof console == "undefined" || typeof console.log == "undefined") {
+        var console = { 
+            log: function(msg) {
+                //setTimeout(function() {
+                //    throw new Error(msg);
+                //}, 0);
+            }
+        };
+    }
+    var _param = function( name )
+    {
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp( regexS );
+        var results = regex.exec( window.location.href );
+        if( results == null )
+            return null;
+        else
+            return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    window.DATA = {
+        words:{{ words_json|safe }}
+    }
+    window.GLOBAL = {
+        game_id:{{ game_id }},
+        level_id:{{ level_id }},
+        debug:true,
+        quick:Boolean(_param('quick')),
+        showScores:Boolean(_param('showscores')),
+        timerOverride: Boolean(_param('timeroverride')) ? 
+            $.parseJSON(_param('timeroverride')) : false,
+        accessToken:"{{ access_token|safe }}"
+    }
+</script>
+<script type="text/javascript" src="{{STATIC_URL}}js/vocab.words.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/vocab.models.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/vocab.questiongenerator.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/vocab.ui.js"></script>
+{% endblock javascript %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/vocab_game.css" media="screen,projection" />
+{% endblock %}
+
+{% block body %}
+<div class="center-column">
+    <div class="play-area">
+        <div class="game-column">
+            <div class="question-area" style="opacity: 0">
+                <div class="question">
+                    attest
+                </div>
+                <div class="choices">
+                    <div class="choice choice-left correct">to affirm to be correct</div>
+                    <div class="choice choice-right incorrect">to free from sin</div>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="correction">
+                    <div class="correction-text"></div>
+                    <button class="acknowledged">Continue</button>
+                </div>
+            </div>
+        </div>
+        <div class="timer-column">
+            <div class="lives">
+                <img class="life" src="{{STATIC_URL}}images/heart-icon.png" />
+                <img class="life" src="{{STATIC_URL}}images/heart-icon.png" />
+                <img class="life" src="{{STATIC_URL}}images/heart-icon.png" />
+                <div style="clear: both"></div>
+            </div>
+            <div class="score">
+                0
+            </div>
+            <div class="timer">
+                <div class="timer-inner"></div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="scores-area" style="display:none;">
+        <div class="score-announcement">
+            You scored <span class="score">2400</span> points!
+        </div>
+        <div class="submitting-score" style="display: none;">
+            Submitting score...
+        </div>
+        <div class="after-submit">
+            <div class="highscores-me">
+                <!-- Personal high scores rendered here -->
+            </div>
+            <div class="highscores-friends">
+                <!-- High scores of friends rendered here -->
+            </div>
+        </div>
+        <button class="scores-finish-button">Next</button>
+    </div>
+    <div class="skills-area" style="display:none;">
+        <div class="buttons">
+            <button class="again-button">Play Again</button>
+            <button class="back-to-games-button">More Games</button>
+        </div>
+        <div class="skills">
+            <!-- Skill bars go here -->
+        </div>
+    </div>
+</div>
+<script type="text/template" id="skill-template">
+    <div class="skill">
+        <div class="word"><%=word%></div>
+        <div class="skill-bar">
+            <div class="skill-bar-inner"></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</script>
+
+<script type="text/template" id="high-scores-template">
+    <div class="highscores">
+        <div class="highscore">
+            <div class="bar">
+                <% if (type == 'personal') { %>
+                    <% if (rank === 1) { %>
+                        Thats your <span class="rank-text">best</span> score!
+                    <% } else { %>
+                        Thats your <span class="rank-text"><%=rankStr%></span> best score.
+                    <% } %>
+                <% } %>
+                <% if (type == 'friends') { %>
+                    <% if (rank === 1) { %>
+                        Your score ranked <span class="rank-text">top</span> among your friends!
+                    <% } else { %>
+                        Your score ranked <span class="rank-text"><%=rankStr%></span> among your friends.
+                    <% } %>
+                <% } %>
+            </div>
+            <div class="scores" style="display: none;">
+                <!-- HighScoreViews rendered here -->
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="high-score-template">
+     <div class="entry">
+        <div class="left-area rank">
+            <%= rank %>
+        </div>
+        <% if (fb_uid !== null) { %>
+            <img class="fbpic center-area"
+            src="https://graph.facebook.com/<%=fb_uid%>/picture?access_token={{access_token|safe}}" />
+        <% } else { %>
+            <img class="fbpic center-area"
+            src="{{STATIC_URL}}images/fb-no-picture.gif">
+        <% } %>
+        <div class="right-area">
+            <div class="name"><%= name %></div>
+            <div class="score"><%= score %></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</script>
+{% endblock body %}

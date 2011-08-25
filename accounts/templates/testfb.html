@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+Uid: {{ uid }}
+<a href="https://www.facebook.com/dialog/oauth?client_id=190616047632448&redirect_uri=http://derekdev.no-ip.org:8081/testfblogin">Login</a>
+
+<fb:login-button class="fb-login-button" autologoutlink="true"></fb:login-button><BR />
+<div class="status">
+	Username: {{ fb_user.first_name }}<BR />
+	Uid: {{ fb_fbuser.uid }}
+</div>
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+  FB.init({
+    appId  : '190616047632448',
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml  : true  // parse XFBML
+});
+FB.Event.subscribe('auth.sessionChange', function(response) {
+	// do something with response.session
+	console.log('session change')
+	console.log(response.session)
+});
+FB.Event.subscribe('auth.statusChange', function(response) {
+	// do something with response.session
+	console.log('status change:')
+	console.log(response.status)
+});
+
+</script>
+
+
+{% endblock %}
+

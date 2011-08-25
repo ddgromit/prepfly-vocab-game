@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block full_title %}Prepfly Vocab{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript">
+    if (typeof console == "undefined" || typeof console.log == "undefined") {
+        var console = { 
+            log: function(msg) {
+                //setTimeout(function() {
+                //    throw new Error(msg);
+                //}, 0);
+            }
+        };
+    }
+</script>
+<script type="text/javascript" src="{{STATIC_URL}}jslibs/jquery-1.5.2.min.js"></script>
+{% endblock javascript %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/vocab_home.css" media="screen,projection" />
+<link href="http://fonts.googleapis.com/css?family=Neucha:regular" rel="stylesheet" type="text/css" >
+{% endblock %}
+
+{% block body %}
+
+<!--User: {{ user }} -->
+<div class="header">
+    <img class="logo" src="{{STATIC_URL}}images/logo.png" />
+    <div class="menu">
+        <div class="item current">Vocab</div>
+        <div class="item disabled">Reading</div>
+        <div class="item disabled">Math</div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="stats-row">
+    <div class="level-box">
+        <div class="level">
+            Level <span class="number">{{level_number}}<span>
+        </div>
+        <div class="bar">
+            <div class="bar-inner" style="width:{{bar_width}}px">
+
+            </div>
+        </div>
+    </div>
+    <div class="friends-box">
+        <div class="explanation">
+            Friends who have logged in today
+        </div>
+        <div class="friend-icons">
+            {% for uid in uids %}
+            <img class="friend-icon"
+            src="https://graph.facebook.com/{{uid}}/picture?access_token={{access_token}}" />
+            {% endfor %}
+            <!--
+            <img class="friend-icon" src="{{STATIC_URL}}images/sample-fb-icon-5.jpg" />
+            -->
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="main-column">
+    <div class="games">
+        <div class="title">
+            Games
+        </div>
+        <a href="/vocab/game/1/">
+            <div class="game game-1">
+                <img src="{{STATIC_URL}}images/speed-icon.png" />
+                <div class="name">Speed Practice</div>
+            </div>
+        </a>
+    </div>
+</div>
+<!--
+<div class="feed">
+    <div class="title">Activity</div>
+    <div class="items">
+        <div class="item">
+            <img src="{{STATIC_URL}}images/sample-fb-icon-5.jpg" />
+            <div class="text">
+                Marian just bested your high score on level 14.  &nbsp;<a
+                    href="">Challenge Her.</a>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="item">
+            <img src="{{STATIC_URL}}images/sample-fb-icon-2.jpg" />
+            <div class="text">
+                Angelo moved onto level 20!
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</div>
+-->
+{% endblock %}

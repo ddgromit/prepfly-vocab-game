@@ -1,0 +1,10 @@
+- model: auth.user
+  pk: 100000
+  fields:
+    first_name: Admin
+    last_name: User
+    username: siteadmin
+    password: "sha1$3636d$b7940ab15a27e0da5d2059445e253c1013521f41"
+    is_staff: true
+    is_active: true
+    is_superuser: true

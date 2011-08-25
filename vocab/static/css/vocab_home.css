@@ -1,0 +1,160 @@
+body {
+  font-family: Helvetica, Arial, sans; }
+
+a img {
+  border: none; }
+
+.header {
+  width: 860px;
+  margin: 0 auto; }
+  .header .logo {
+    font-family: 'Permanent Marker', arial, serif;
+    letter-spacing: 0.036em;
+    font-size: 40px;
+    margin-left: 15px;
+    margin-top: 10px; }
+  .header .menu {
+    float: right;
+    margin-top: 20px; }
+    .header .menu .item {
+      border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      padding: 2px 5px;
+      font-size: 12px;
+      font-weight: bold;
+      width: 50px;
+      text-align: center;
+      float: left;
+      margin-left: 8px;
+      cursor: pointer; }
+    .header .menu .enabled {
+      color: black;
+      background-color: white; }
+    .header .menu .enabled:hover {
+      color: white;
+      background-color: #EE6F00; }
+    .header .menu div.disabled {
+      color: #aaa;
+      background-color: white; }
+    .header .menu .current {
+      background-color: orange;
+      color: white; }
+
+.stats-row {
+  width: 860px;
+  margin: 20px auto 0 auto; }
+  .stats-row .level-box {
+    float: left;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 8px 20px;
+    background-color: white;
+    width: 300px; }
+    .stats-row .level-box .level {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px; }
+    .stats-row .level-box .bar {
+      border-radius: 4px;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      width: 240px;
+      background-color: #1e90cc;
+      padding: 1px;
+      /* This is so the inner bar margin doesn't collapse */
+      margin: 0 0 8px 0; }
+      .stats-row .level-box .bar .bar-inner {
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        height: 24px;
+        margin: 6px 6px;
+        background-color: #f9aa0b; }
+  .stats-row .friends-box {
+    float: right;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    width: 300px;
+    padding: 8px 10px;
+    background-color: white; }
+    .stats-row .friends-box .explanation {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333; }
+    .stats-row .friends-box .friend-icons {
+      margin-top: 10px; }
+      .stats-row .friends-box .friend-icons .friend-icon {
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        width: 40px; }
+
+.main-column {
+  width: 820px;
+  margin: 20px auto 0 auto;
+  background-color: white;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  padding: 15px 20px; }
+
+.games {
+  margin: 0px 0 30px 10px; }
+  .games .title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px; }
+  .games .game {
+    width: 200px;
+    text-align: center;
+    color: #222;
+    padding: 20px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px; }
+  .games a {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer; }
+  .games .game:hover {
+    background-color: #efefef; }
+
+.feed {
+  width: 820px;
+  margin: 20px auto 0 auto;
+  background-color: white;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  padding: 15px 20px 30px 30px; }
+  .feed .title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px; }
+  .feed .items {
+    margin-top: 15px; }
+  .feed .item {
+    margin-left: 10px;
+    margin-top: 10px; }
+    .feed .item a {
+      color: #1E90CC;
+      text-decoration: none;
+      font-weight: bold; }
+    .feed .item img {
+      float: left;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px; }
+    .feed .item .text {
+      float: left;
+      margin-left: 20px;
+      font-size: 18px; }

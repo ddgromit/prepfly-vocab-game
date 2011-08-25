@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block full_title %}Prepfly Vocab{% endblock %}
+
+{% block site_class %}facebook{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script type="text/javascript">
+    if (typeof console == "undefined" || typeof console.log == "undefined") {
+        var console = { 
+            log: function(msg) {
+                //setTimeout(function() {
+                //    throw new Error(msg);
+                //}, 0);
+            }
+        };
+    }
+</script>
+<script type="text/javascript" src="{{STATIC_URL}}jslibs/jquery-1.5.2.min.js"></script>
+{% endblock javascript %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/vocab_home_facebook.css" media="screen,projection" />
+{% endblock %}
+
+{% block body %}
+<div class="header">
+    <img class="logo-subtitle" src="{{STATIC_URL}}images/facebook/logo-with-subtitle.png" />
+    {% if logged_in %}
+    <div class="level-area">
+        <div class="text">
+            <div class="level">Level 1</div>
+            <div class="xp">XP {{xp}} / 100</div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="progress">
+            <div class="progress-inner" style="width: {{percent}}%;"></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    {% else %}
+    
+    <img src="{{STATIC_URL}}images/connect-with-facebook.png"
+        class="connect-with-facebook" onclick="window.location = '/login'" />
+    {% endif %}
+    <div style="clear: both;"></div>
+</div>
+<div class="main-area">
+    <div class="tabs">
+        <div class="tab tab-left tab-right">
+            <a href="/vocab_facebook/">Games</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="games">
+        <div class="game game-no-message" onclick="window.location = '/vocab/game/1/'">
+            <img class="game-icon game-icon-1" src="{{STATIC_URL}}/images/speed-icon.png" />
+            <div class="title">
+                Quick Vocab
+            </div>
+        </div>
+        <div class="game game-message">
+            <div class="title">
+                More Games Coming Soon
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+        FB.Canvas.setAutoResize();
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      '//connect.facebook.net/en_US/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
+{% endblock %}
